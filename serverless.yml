@@ -1,0 +1,146 @@
+service: bookshop-api
+
+plugins:
+  - serverless-offline
+
+functions:
+  callFunction:
+    handler: handler.callHandler
+    events:
+      - http:
+          path: user/signup
+          method: post
+          cors: true
+      - http:
+          path: user/login
+          method: post
+          cors: true
+      - http:
+          path: user/logout
+          method: post
+          cors: true
+      
+      - http:
+          path: author
+          method: get
+          cors: true
+      - http:
+          path: author
+          method: post
+          cors: true
+      - http:
+          path: author/{authorId}
+          method: put
+          cors: true
+      - http:
+          path: author/{authorId}
+          method: delete
+          cors: true
+      - http:
+          path: author/{authorId}
+          method: get
+          cors: true
+      - http:
+          path: authorByName
+          method: post
+          cors: true
+
+      - http:
+          path: genre
+          method: get
+          cors: true
+      - http:
+          path: genre
+          method: post
+          cors: true
+      - http:
+          path: genre/{genreId}
+          method: put
+          cors: true
+      - http:
+          path: genre/{genreId}
+          method: delete
+          cors: true
+      - http:
+          path: genre/{genreId}
+          method: get
+          cors: true
+      - http:
+          path: genreByName
+          method: post
+          cors: true
+
+      - http:
+          path: book
+          method: get
+          cors: true
+      - http:
+          path: book
+          method: post
+          cors: true
+      - http:
+          path: book/{bookId}
+          method: put
+          cors: true
+      - http:
+          path: book/{bookId}
+          method: delete
+          cors: true
+      - http:
+          path: book/{bookId}
+          method: get
+          cors: true
+      - http:
+          path: bookByName
+          method: post
+          cors: true
+      - http:
+          path: pdf/{bookId}
+          method: get
+          cors: true
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+
+provider:
+    name: aws
+    runtime: nodejs8.10
+    stage: dev
+    region: ap-northeast-1
+    timeout: 60
+    environment:
+        STAGE: ${self:provider.stage}
+        IS_LOCAL: ${self:custom.environment.${self:provider.stage}.IS_LOCAL}
+        MY_SQL: ${self:custom.environment.${self:provider.stage}.MY_SQL}
+
+custom:
+    environment: ${file(./config/env.json)}
