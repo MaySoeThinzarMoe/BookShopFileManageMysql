@@ -13,7 +13,7 @@
   "dependencies": {
     "@chilkat/ck-node11-win64": "^9.50.78",
     "FormData": "^0.10.1",
-    "ajv": "^6.5.1",
+    "ajv": "^6.12.3",
     "atob": "^2.1.2",
     "aws-sdk": "^2.268.1",
     "axios": "^0.18.0",
